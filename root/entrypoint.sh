@@ -28,7 +28,7 @@ provisioner() {
 
     # Replace environment variables
     envsubst < /etc/wallabag/parameters.template.yml > app/config/parameters.yml
-    envsubst < /etc/wallabag/php-wallabag.template.ini > /etc/php81/conf.d/50_wallabag.ini
+    envsubst < /etc/wallabag/php-wallabag.template.ini > /etc/php83/conf.d/50_wallabag.ini
     envsubst '${FASTCGI_READ_TIMEOUT}' < /etc/wallabag/nginx.template.conf | sed 's/\$\${/\${/g' > /etc/nginx/nginx.conf 
 
     # Wait for external database

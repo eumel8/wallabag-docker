@@ -9,7 +9,7 @@ FROM golang:alpine as builder
 # flag -ldflags "-s -w" produces a smaller executable
 RUN go install -ldflags "-s -w" -v github.com/a8m/envsubst/cmd/envsubst@v1.3.0
 
-FROM alpine:3.18
+FROM alpine:3.24
 
 COPY --from=builder /go/bin/envsubst /usr/bin/envsubst
 
@@ -21,43 +21,41 @@ RUN set -ex \
       libwebp \
       nginx \
       pcre \
-      php81 \
-      php81-bcmath \
-      php81-ctype \
-      php81-curl \
-      php81-dom \
-      php81-fpm \
-      php81-gd \
-      php81-gettext \
-      php81-iconv \
-      php81-json \
-      php81-mbstring \
-      php81-opcache \
-      php81-openssl \
-      php81-pecl-amqp \
-      php81-pecl-imagick \
-      php81-pdo_mysql \
-      php81-pdo_pgsql \
-      php81-pdo_sqlite \
-      php81-phar \
-      php81-session \
-      php81-simplexml \
-      php81-tokenizer \
-      php81-xml \
-      php81-zlib \
-      php81-sockets \
-      php81-xmlreader \
-      php81-tidy \
-      php81-intl \
-      php81-sodium \
+      php83 \
+      php83-bcmath \
+      php83-ctype \
+      php83-curl \
+      php83-dom \
+      php83-fpm \
+      php83-gd \
+      php83-gettext \
+      php83-iconv \
+      php83-mbstring \
+      php83-opcache \
+      php83-openssl \
+      php83-pecl-amqp \
+      php83-pecl-imagick \
+      php83-pdo_mysql \
+      php83-pdo_pgsql \
+      php83-pdo_sqlite \
+      php83-phar \
+      php83-session \
+      php83-simplexml \
+      php83-tokenizer \
+      php83-xml \
+      php83-sockets \
+      php83-xmlreader \
+      php83-tidy \
+      php83-intl \
+      php83-sodium \
       mariadb-client \
-      postgresql14-client \
+      postgresql17-client \
       rabbitmq-c \
       s6 \
       tar \
       tzdata \
- && ln -sf /usr/bin/php81 /usr/bin/php \
- && ln -sf /usr/sbin/php-fpm81 /usr/sbin/php-fpm \
+ && ln -sf /usr/bin/php83 /usr/bin/php \
+ && ln -sf /usr/sbin/php-fpm83 /usr/sbin/php-fpm \
  && rm -rf /var/cache/apk/* \
  && ln -sf /dev/stdout /var/log/nginx/access.log \
  && ln -sf /dev/stderr /var/log/nginx/error.log
